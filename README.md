@@ -14,7 +14,7 @@
 Requires Python 3.10+ (stdlib only, no pip deps).
 
 ```bash
-git clone https://github.com/<owner>/myfocus-skill ~/myfocus-skill
+git clone https://github.com/cskwork/myfocus-skill ~/myfocus-skill
 ln -s ~/myfocus-skill ~/.claude/skills/myfocus
 ```
 
