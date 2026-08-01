@@ -1,9 +1,8 @@
 ---
 name: myfocus
 description: myfocus — top next task across agent sessions. Use when: "what next", "next task", "다음 작업", "prioritize".
-argument-hint: "[--window 5h] [--cwd PATH] [--agents claude_code,codex,gemini] [--sections LIST] [--brief] [--list-agents] [--save] [--json]"
-level: 2
 ---
+
 
 # MyFocus Skill
 
