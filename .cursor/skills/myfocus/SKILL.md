@@ -1,6 +1,7 @@
 ---
 name: myfocus
-description: myfocus — top next task across agent sessions. Use when: "what next", "next task", "다음 작업", "prioritize".
+description: 'myfocus — top next task across agent sessions. Use when: "what next", "next task", "다음 작업", "prioritize".'
+
 ---
 
 
