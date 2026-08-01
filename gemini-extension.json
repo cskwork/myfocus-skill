@@ -1,6 +1,6 @@
 {
   "name": "myfocus",
   "version": "0.1.0",
-  "description": "Use when the user asks what to work on next after context-switching across coding agents. Scans recent session logs from any registered agent (bundled, Claude Code / Codex / Gemini; extensible via scripts/scanners/) and surfaces the single highest-priority next task with one concrete entry-point. Triggers on \"/myfocus\", \"myfocus\", \"what next\", \"next task\", \"다음 작업\", \"prioritize\".",
+  "description": "Use when the user asks what to work on next after context-switching across coding agents. Scans recent session logs...",
   "contextFileName": "GEMINI.md"
 }
