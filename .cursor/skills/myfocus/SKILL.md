@@ -1,6 +1,6 @@
 ---
 name: myfocus
-description: Use when the user asks what to work on next after context-switching across coding agents. Scans recent session logs from any registered agent (bundled, Claude Code / Codex / Gemini; extensible via scripts/scanners/) and surfaces the single highest-priority next task with one concrete entry-point. Triggers on "/myfocus", "myfocus", "what next", "next task", "다음 작업", "prioritize".
+description: myfocus — top next task across agent sessions. Use when: "what next", "next task", "다음 작업", "prioritize".
 argument-hint: "[--window 5h] [--cwd PATH] [--agents claude_code,codex,gemini] [--sections LIST] [--brief] [--list-agents] [--save] [--json]"
 level: 2
 ---

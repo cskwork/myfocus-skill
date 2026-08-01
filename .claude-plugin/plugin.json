@@ -1,7 +1,7 @@
 {
   "name": "myfocus",
   "version": "0.1.0",
-  "description": "Use when the user asks what to work on next after context-switching across coding agents. Scans recent session logs...",
+  "description": "myfocus \u2014 top next task across agent sessions. Use when: \"what next\", \"next task\", \"\ub2e4\uc74c \uc791\uc5c5\", \"prioritize\".",
   "author": {
     "name": "cskwork",
     "url": "https://github.com/cskwork"
