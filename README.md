@@ -1,3 +1,5 @@
+<p align="center"><img src="logo.png" width="120" alt="logo" /></p>
+
 # myfocus-skill
 
 > `/myfocus` — Surface the highest-priority next task across recent coding-agent sessions. An antidote to parallel-work decision fatigue.
