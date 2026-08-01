@@ -1,0 +1,4 @@
+# myfocus
+
+@./SKILL.md
+

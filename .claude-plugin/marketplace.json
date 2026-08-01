@@ -1,0 +1,16 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "myfocus",
+  "description": "Use when the user asks what to work on next after context-switching across coding agents. Scans recent session logs from",
+  "owner": {
+    "name": "cskwork"
+  },
+  "plugins": [
+    {
+      "name": "myfocus",
+      "description": "Use when the user asks what to work on next after context-switching across coding agents. Scans recent session logs from",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
