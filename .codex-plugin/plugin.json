@@ -6,8 +6,8 @@
     "name": "cskwork",
     "url": "https://github.com/cskwork"
   },
-  "homepage": "https://github.com/cskwork/myfocus",
-  "repository": "https://github.com/cskwork/myfocus",
+  "homepage": "https://github.com/cskwork/myfocus-skill",
+  "repository": "https://github.com/cskwork/myfocus-skill",
   "license": "MIT",
   "keywords": [
     "myfocus",
@@ -25,7 +25,7 @@
     "capabilities": [
       "Instructions"
     ],
-    "websiteURL": "https://github.com/cskwork/myfocus",
+    "websiteURL": "https://github.com/cskwork/myfocus-skill",
     "defaultPrompt": [
       "Use myfocus for this task."
     ],

@@ -6,7 +6,7 @@
 ### Install
 
 ```bash
-claude plugin marketplace add cskwork/myfocus
+claude plugin marketplace add cskwork/myfocus-skill
 claude plugin install myfocus@myfocus
 ```
 
@@ -39,7 +39,7 @@ claude plugin marketplace remove myfocus
 ### Install
 
 ```bash
-codex plugin marketplace add cskwork/myfocus --ref main
+codex plugin marketplace add cskwork/myfocus-skill --ref main
 codex plugin add myfocus@myfocus
 ```
 
@@ -66,14 +66,14 @@ codex plugin marketplace remove myfocus
 ### Install (extension, always-on)
 
 ```bash
-gemini extensions install https://github.com/cskwork/myfocus
+gemini extensions install https://github.com/cskwork/myfocus-skill
 ```
 
 ### Install (command, opt-in)
 
 ```bash
 mkdir -p ~/.gemini/commands
-curl -fsSL https://raw.githubusercontent.com/cskwork/myfocus/main/skills/myfocus/agents/gemini.toml \
+curl -fsSL https://raw.githubusercontent.com/cskwork/myfocus-skill/main/skills/myfocus-skill/agents/gemini.toml \
   -o ~/.gemini/commands/myfocus.toml
 ```
 
@@ -99,8 +99,8 @@ gemini extensions uninstall myfocus
 ### Install
 
 ```bash
-npx skills add cskwork/myfocus
-npx skills add cskwork/myfocus -g
+npx skills add cskwork/myfocus-skill
+npx skills add cskwork/myfocus-skill -g
 ```
 
 Type `/myfocus` in a new agent chat.
@@ -131,7 +131,7 @@ npx skills remove myfocus
 ### Install
 
 ```bash
-agy plugin install https://github.com/cskwork/myfocus
+agy plugin install https://github.com/cskwork/myfocus-skill
 ```
 
 ### Verify
