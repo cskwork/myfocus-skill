@@ -1,4 +1,4 @@
 # myfocus
 
-@./SKILL.md
+@./skills/myfocus/SKILL.md
 

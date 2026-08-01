@@ -15,7 +15,7 @@
     "claude-code",
     "codex"
   ],
-  "skills": "./",
+  "skills": "./skills/",
   "interface": {
     "displayName": "Myfocus",
     "shortDescription": "Use when the user asks what to work on next after context-switching across codin",
