@@ -7,13 +7,7 @@ description: 'myfocus — top next task across agent sessions. Use when: "what n
 
 # MyFocus Skill
 
-Surface the single highest-priority next task across recent coding-agent sessions. The skill never *executes* the task — it just points you to the one thing that deserves your next 30 minutes.
-
-## Trigger
-
-- `/myfocus`
-- "myfocus", "what next", "next task", "prioritize"
-- "다음 작업", "다음에 뭐 할까"
+Surface the single highest-priority next task across recent coding-agent sessions — the one thing that deserves the user's next 30 minutes.
 
 ## Usage
 
@@ -31,23 +25,23 @@ Surface the single highest-priority next task across recent coding-agent session
 
 ## What this skill does
 
-When invoked, the calling Claude performs these steps:
+When invoked, perform these steps:
 
 ### 1. Run the scanner
 
-Execute (adjust the path to wherever the skill is installed):
+Run from the repo root — walk up from this file to the directory holding `scripts/collect.py`, so the `scripts` package resolves:
 
 ```bash
 python3 -m scripts.collect --window <window> [--cwd <cwd>] [--agents <list>] [--max-files-per-agent N] [--max-chars-per-session N]
 ```
 
-Forward whatever flags the user passed. If `--json` was passed, print the script's stdout verbatim and stop.
+The scanner takes those flags plus `--list-agents`; forward only those. `--brief`, `--sections`, `--save`, and `--json` are rendering flags you apply yourself after the scan — the scanner exits 2 on an unrecognized flag.
 
-The scanner must be invoked from the skill's repo root (so the `scripts` package resolves). When the skill is installed via symlink at `~/.claude/skills/myfocus`, the working directory should be `~/.claude/skills/myfocus`.
+If `--json` was passed, print the script's stdout verbatim and stop.
 
 ### 2. Parse and cluster
 
-Parse the scanner's JSON. Group `sessions[]` by `cwd` (treat `null` cwd as its own bucket). Within each cwd, infer the dominant topic from the most recent `user_excerpts` and `assistant_excerpts`.
+Parse the scanner's JSON. Group `sessions[]` by `cwd` (treat `null` cwd as its own bucket). Within each cwd, infer the dominant topic from the most recent `user_excerpts` and `assistant_excerpts`. Done when every entry in `sessions[]` sits in exactly one topic.
 
 ### 3. Apply the priority heuristic
 
@@ -63,11 +57,11 @@ For each topic, compute a score:
 | "Done"/commit/PR-merge signal in latest assistant turn | `assistant_excerpts[-1]` | −3 |
 | Only 1 session, total length <500 chars | session count + char count | −1 |
 
-Tie-break: most recent `mtime`, then the agent the skill is running inside.
+Score every topic; the highest score becomes `top_priority`. Tie-break: most recent `mtime`, then the agent the skill is running inside.
 
 ### 4. Render — composable sections
 
-The output is a sequence of **named sections**. Each section is independent: render any subset, in any order. This is the extension point — to add a new section, define its name and renderer here and accept it under `--sections`.
+The output is a sequence of **named sections**. Each section is independent: render any subset, in any order.
 
 #### Section catalog (built-in)
 
@@ -78,7 +72,7 @@ The output is a sequence of **named sections**. Each section is independent: ren
 | `why_now` | yes | Numbered list of the heuristic signals that made this win, with each signal explained in one sentence |
 | `first_step` | yes | Numbered, copy-pasteable concrete actions. Include `cd`, file paths, exact commands |
 | `references` | verbose default only | Source session id, agent, repo path, ticket/issue refs, any IDs mentioned in transcripts |
-| `deferred` | yes (omit if <2 candidates) | Bulleted list with one-liner reasons per item |
+| `deferred` | yes | Bulleted list with one-liner reasons per item |
 | `context` | yes | Window, session counts per agent, cross-cutting theme |
 | `commands` | optional | Suggested follow-up commands the user might want next (e.g., `/myfocus --save`, `git log --since`) |
 
@@ -92,7 +86,7 @@ Add a new section by adding a row here, defining its renderer below, and accepti
 
 #### Verbose default — beginner-friendly template
 
-Render exactly this layout (no other framing, no emojis except section markers, plain Markdown):
+Render exactly this layout — plain Markdown, section markers the only emoji:
 
 ```
 🎯 TOP PRIORITY: <one-sentence task title>
