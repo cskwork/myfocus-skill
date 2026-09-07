@@ -1,6 +1,6 @@
 ---
 name: myfocus
-description: 'myfocus — top next task across agent sessions. Use when: "what next", "next task", "다음 작업", "prioritize".'
+description: Rank the next task across recent local coding-agent sessions when the user asks for cross-session prioritization or invokes myfocus. A next-step question about the current task does not authorize scanning other sessions.
 
 ---
 
@@ -17,7 +17,7 @@ Surface the single highest-priority next task across recent coding-agent session
 /myfocus --cwd $(pwd)                          # only sessions in current directory tree
 /myfocus --agents claude_code,codex            # restrict to subset
 /myfocus --brief                               # one-screen terse output (legacy minimal layout)
-/myfocus --sections top,first_step             # pick exactly which sections to render
+/myfocus --sections top_priority,first_step             # pick exactly which sections to render
 /myfocus --list-agents                         # show what scanners are registered
 /myfocus --save                                # snapshot to ~/.claude/myfocus/YYYY-MM-DD-HHMM.md
 /myfocus --json                                # raw scanner JSON, skip LLM synthesis
@@ -161,14 +161,14 @@ Create `~/.claude/myfocus/` if missing. Write the rendered markdown to `~/.claud
 - **Never execute the task itself.** The skill only points; the user (or the next skill invocation) acts.
 - **Never write to source code** as part of `/myfocus`. The only write target is the optional snapshot file.
 - **Single laptop only.** No remote fetching, no cross-machine aggregation.
-- **No external services.** All processing is local — session content never leaves the machine.
+- **No external uploads.** Do not send session contents to another service. Use only the bounded scanner output needed for synthesis and redact secrets/personal data from excerpts and errors; do not promise the active model itself is local.
 
 ## Failure modes
 
 | Symptom | Action |
 |---|---|
-| `collect.py` exits non-zero | Print stderr verbatim, do not attempt synthesis. |
+| `collect.py` exits non-zero | Report the relevant error with secrets redacted; do not invent a ranking. |
 | Scanner JSON parse fails | Surface the parse error and the first 200 chars of stdout. |
 | All agents return zero sessions | Use the "No activity" message above. |
-| `--cwd` filter removes everything | Output: "No sessions in last <window> matching <cwd>. Available cwds: <top 5 from a no-filter scan>." |
+| `--cwd` filter removes everything | Report no sessions in the requested scope; do not broaden the scan unless the user asks. |
 | Unknown agent in `--agents` | The scanner records it in `errors[]`. Mention this once in the report's CONTEXT section. |
