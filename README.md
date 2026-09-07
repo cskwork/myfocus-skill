@@ -99,3 +99,7 @@ All tests use stdlib + temp-dir fixtures. No real session content is committed t
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Maintained skill sources
+
+Edit `skills/myfocus/` for maintained instructions/helpers and root `scripts/` for shared resources. Run `python3 scripts/sync-distributions.py`, then `python3 scripts/sync-distributions.py --check`. Resource copies under the skill and the existing Cursor directory are generated; keep them committed for independent installation.
